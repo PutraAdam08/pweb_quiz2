@@ -46,7 +46,8 @@ public class HomeServlet extends HttpServlet {
 	    else{  
 	    	response.sendRedirect("login");
 	    }  
-		
+		//test
+
 	}
 
 	/**
