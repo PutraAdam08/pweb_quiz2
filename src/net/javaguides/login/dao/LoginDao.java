@@ -19,7 +19,7 @@ public class LoginDao {
 
             // Step 2:Create a statement using connection object
             PreparedStatement preparedStatement = connection
-            .prepareStatement("select * from user where email = ? and password = ? ")) {
+            .prepareStatement("select * from users where email = ? and password = ? ")) {
             preparedStatement.setString(1, user.getEmail());
             preparedStatement.setString(2, user.getPassword());
 

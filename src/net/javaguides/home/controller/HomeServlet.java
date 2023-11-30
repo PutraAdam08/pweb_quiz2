@@ -1,6 +1,8 @@
 package javaguides.home.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import javaguides.usermanagement.model.User;
 
 /**
  * Servlet implementation class HomeServlet3
@@ -37,15 +41,18 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		HttpSession session=request.getSession();  
+		HttpSession session=request.getSession(false);  
 		if(session!=null){
-			response.getWriter().append("served at: ").append(request.getContextPath());
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/homepage.jsp");
 			dispatcher.forward(request, response);
+			User user = (User) session.getAttribute("user");
+		    Integer userId = user.getId();
+		    PrintWriter out = response.getWriter();
+		    out.println(userId);
 	    }  
 	    else{  
 	    	response.sendRedirect("login");
-	    }  
+	    }
 		//test
 
 	}
@@ -55,7 +62,6 @@ public class HomeServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
 
 }

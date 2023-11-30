@@ -41,8 +41,8 @@ public class LoginServlet extends HttpServlet {
 
         try {
             if (loginDao.validate(user)) {
-                HttpSession session = request.getSession();
-                session.setAttribute("email",email);
+                HttpSession session = request.getSession(false);
+                session.setAttribute("user",user);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("home");
             	dispatcher.forward(request, response);
             } else {

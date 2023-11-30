@@ -2,6 +2,7 @@ package javaguides.recipe.controller;
 
 import javaguides.recipe.dao.RecipeDao;
 import javaguides.recipe.model.Recipe;
+import javaguides.usermanagement.model.User;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
  
 /**
@@ -46,6 +48,10 @@ public class RecipeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session=request.getSession(false); 
+		if(session==null){
+			response.sendRedirect("login");
+	    } 
 		String action = request.getServletPath();
 		 
 	    try {
@@ -78,15 +84,18 @@ public class RecipeServlet extends HttpServlet {
 	
 	 private void insertRecipe(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, IOException {
-		InputStream photo = null;
+		//InputStream photo = null;
 		//Part filePart = request.getParts("photo");
+		HttpSession session=request.getSession(); 
+	    User user = (User) session.getAttribute("user");
+	    Integer userId = user.getId();
 	    String recipeName = request.getParameter("recipeName");
 	    String ingridient = request.getParameter("ingridient");
 	    String step = request.getParameter("step");
 	    
 	 
 	    Recipe newRecipe = new Recipe(recipeName, ingridient, step);
-	    //recipeDao.addRecipe(newRecipe, photo);
+	    //recipeDao.addRecipe(newRecipe);
 	    response.sendRedirect("list");
 	    }
 	
