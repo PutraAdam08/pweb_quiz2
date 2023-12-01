@@ -42,7 +42,7 @@ public class HomeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session=request.getSession(false);  
-		if(session!=null){
+		if(session!=null && session.getAttribute("user") != null){
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/homepage.jsp");
 			dispatcher.forward(request, response);
 			User user = (User) session.getAttribute("user");

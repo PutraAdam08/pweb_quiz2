@@ -37,7 +37,7 @@ public class RecipeDao {
 	public int addRecipe(Recipe recipe, InputStream photo) throws ClassNotFoundException {
         String INSERT_USERS_SQL = "INSERT INTO recipe" +
             "  (recipeName, ingridient, step, photo, userId) VALUES " +
-            " (?, ?, ?, ?);";
+            " (?, ?, ?, ?, ?);";
 
         int result = 0;
 
@@ -51,7 +51,7 @@ public class RecipeDao {
                 preparedStatement.setString(1, recipe.getRecipeName());
                 preparedStatement.setString(2, recipe.getIngridient());
                 preparedStatement.setString(3, recipe.getStep());
-                preparedStatement.setString(4, recipe.getStep());
+                preparedStatement.setInt(5, recipe.getUserId());
                 if(photo != null)
                 	preparedStatement.setBlob(4, photo);
 

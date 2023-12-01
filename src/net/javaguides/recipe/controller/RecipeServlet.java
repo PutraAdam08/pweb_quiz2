@@ -96,15 +96,16 @@ public class RecipeServlet extends HttpServlet {
 	 
 	    Recipe newRecipe = new Recipe(recipeName, ingridient, step);
 	    //recipeDao.addRecipe(newRecipe);
-	    response.sendRedirect("list");
+	    response.sendRedirect("recipe");
 	    }
 	
 	private void listRecipe(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
         List<Recipe> listRecipe = recipeDao.listAllRecipe();
         request.setAttribute("listRecipe", listRecipe);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("recipeList.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/recipe.jsp");
         dispatcher.forward(request, response);
+        return;
     }
 
 }
