@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.io.InputStream;
 import java.util.List;
+import java.util.ArrayList;
 import javax.servlet.http.Part;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -98,14 +99,13 @@ public class RecipeServlet extends HttpServlet {
 	    //recipeDao.addRecipe(newRecipe);
 	    response.sendRedirect("recipe");
 	    }
-	
+	 
 	private void listRecipe(HttpServletRequest request, HttpServletResponse response)
             throws SQLException, IOException, ServletException {
-        List<Recipe> listRecipe = recipeDao.listAllRecipe();
+        ArrayList<Recipe> listRecipe = recipeDao.listAllRecipe();
         request.setAttribute("listRecipe", listRecipe);
         RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/recipe.jsp");
         dispatcher.forward(request, response);
-        return;
     }
 
 }

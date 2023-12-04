@@ -20,10 +20,10 @@
             <a class="nav-link" href="/pweb-quiz2/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pweb-quiz2/recipe">Recipe</a>
+            <a class="nav-link" href="#">Recipe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/pweb-quiz2/profile">Profile</a>
+            <a class="nav-link" href="#">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/pweb-quiz2/logout">Logout</a>
@@ -32,16 +32,41 @@
       </div>
     </div>
  </nav>
-	<div class="p-5">
-	<%@ page import ="java.util.ArrayList"%>
-	<%@ page import ="javaguides.recipe.model.Recipe"%>
-	<%@ page import = "javaguides.recipe.dao.RecipeDao" %>
+	<div class="container-fluid">
+	  <div class="row gap-5 justify-content-center" style="height: 100vh;">
+	    <div class="col-md-3 bg-secondary">
+	    		<div class="mb-5"></div>
+	    		<div class="p-3" style="position: fixed; width: 22em;">
+		          <h3 class="text-center">MyProfile</h3>
+		          <form>
+		            <div class="form-group" id="FormName">
+		              <div class="row">
+		                <div class="col">
+		                  <label for="name">Name</label>
+		                  <input type="text" class="form-control" id="name" placeholder="John Doe" disabled>
+		                </div>
+		              </div>
+		            </div>
+		            <div class="form-group" id="FormEmail">
+		              <div class="row">
+		                <div class="col">
+		                  <label for="email">Email</label>
+		                  <input type="email" class="form-control" id="email" placeholder="johndoe@example.com" disabled>
+		                </div>
+		              </div>
+		            </div>
+		          </form>
+		       	
+		          <div class="text-center">
+		            <button type="button" class="btn btn-primary mt-2">Edit</button>
+		          </div>
+		   	</div>
+	    </div>
 	
-		<%
-			ArrayList<Recipe> listRecipe = (ArrayList<Recipe>) request.getAttribute("listRecipe");
-		%>
-					<table class="table table-bordered">
-					
+	    <div class="col">
+	      <div class="row mt-5"></div>
+	      <div class="row mt-3 p-5">
+	        <table class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>ID</th>
@@ -50,27 +75,10 @@
                                 <th>Step</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <!--   for (Todo todo: todos) {  -->
-                            <%
-                            for (Recipe recipe : listRecipe) {
-                                int id = recipe.getId();
-                                String name = recipe.getRecipeName();
-                                String ingridient = recipe.getIngridient();
-                                String step = recipe.getStep();
-                            %>
-	                            <tr>
-					                <td><%= id %></td>
-					                <td><%= name %></td>
-					                <td><%= ingridient %></td>
-					                <td><%= step %></td>
-					            </tr>
-					        <%
-					            }
-					        %>
-                            <!-- } -->
-                        </tbody>
-                    </table>
-				</div>
+            </table>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 </body>
 </html>

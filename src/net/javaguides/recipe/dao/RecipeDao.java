@@ -66,8 +66,8 @@ public class RecipeDao {
             return result;
 	}
 	
-	public List<Recipe> listAllRecipe() throws SQLException {
-        List<Recipe> listRecipe = new ArrayList<>();
+	public ArrayList<Recipe> listAllRecipe() throws SQLException {
+        ArrayList<Recipe> listRecipe = new ArrayList<>();
         Recipe recipe = null;
         String sql = "SELECT * FROM recipe";
          

@@ -22,10 +22,10 @@
             <a class="nav-link" href="/pweb-quiz2/home">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Recipe</a>
+            <a class="nav-link" href="#/pweb-quiz2/recipe">Recipe</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="/pweb-quiz2/profile">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/pweb-quiz2/logout">Logout</a>
